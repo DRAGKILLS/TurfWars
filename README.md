@@ -1,4 +1,4 @@
 # TurfWars
 Origionally developed by MyNameIsTriXz | MCPE Turf Wars minigame
 
-# [Source](http://imyannic.bplaced.net/docs.php)
+I said i will never release the fixed ver but i dont want it anyways
