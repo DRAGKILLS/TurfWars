@@ -1,7 +1,7 @@
 name: TurfWars
 main: TurfWars\Main
 version: 1.0.0
-api: 2.0.0
-load: POSTWORLD
+api: 3.0.0
+load: STARTUP
 author: MyNameIsTriXz
-description: TurfWars!
+description: TurfWars pocketmine!
