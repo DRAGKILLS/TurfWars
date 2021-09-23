@@ -71,7 +71,7 @@ $this->getLogger()->info("A TurfWars map was added to the worlds folder, you can
 if(!file_exists($this->getDataFolder()."config.yml")){
 new Config($this->getDataFolder()."config.yml", Config::YAML, [
     "Max_Players" => 2,
-    "Prefix" => $this->PREFIX,
+    "Prefix" => "§d[§9TW§d]§b",
     "Enable_PC_Arrow_Mechanics" => false
 ]);
 }
