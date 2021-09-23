@@ -3,7 +3,7 @@ Origionally developed by MyNameIsTriXz | MCPE Turf Wars minigame
 
 I said i will never release the fixed ver but i dont want it anyways
 
-##How to use
+## How to use
 ```
 1. Move this folder to PocketMine/plugins
 2. Move TurfWars.phar out of this folder to PocketMine/plugins
