@@ -57,7 +57,7 @@ public $games = ["Game1" => ["Arena" => "TW-1", "Status" => "JOINABLE", "RedScor
 
 public function onEnable(){
 $this->getServer()->getPluginManager()->registerEvents($this, $this);
-$this->getServer()->getScheduler()->scheduleRepeatingTask(new Task($this), 20);
+$this->getScheduler()->scheduleRepeatingTask(new Task($this), 20);
  
 
 
@@ -104,7 +104,8 @@ if($index["Status"] == "INGAME"){
 $this->deleteDirectory($this->getServer()->getDataPath() . "/worlds/" .$index["Arena"]);
                 $this->copymap($this->getDataFolder() . "/maps/TW-BACKUP", $this->getServer()->getDataPath() . "/worlds/" . $index["Arena"]);
 
-}}
+}
+}
 }
 
 
@@ -163,8 +164,11 @@ $sign->setText($signt[0], $signt[1], $st, "§d".count($players)."§e / §d".$thi
 
 $sign->setText($signt[0], $signt[1], $st, "§d0§e / §d".$this->MAX);
 
-}}}
-}}
+}
+}
+}
+}
+}
 }
 
                         
@@ -195,7 +199,8 @@ $s = $this->games[$this->getGameByPlayer($event->getPlayer())]["Status"];
 $this->LeaveCheck($this->getGameByPlayer($event->getPlayer()) , $this->getTeam($event->getPlayer()));
 
 
-}}
+}
+}
 
 
 
@@ -361,7 +366,8 @@ $player->sendMessage($this->PREFIX."Game was cancelled, to less players.");
 $this->deleteDirectory($this->getServer()->getDataPath() . "/worlds/" .$this->games[$game]["Arena"]);
                 $this->copymap($this->getDataFolder() . "/maps/TW-BACKUP", $this->getServer()->getDataPath() . "/worlds/" . $this->games[$game]["Arena"]);
 
-}}
+}
+}
 
 
 }
@@ -376,7 +382,7 @@ $this->deleteDirectory($this->getServer()->getDataPath() . "/worlds/" .$this->ga
 public function removeArrow(ProjectileHitEvent $event){
 if($this->inTurfWars($event->getEntity()->shootingEntity)){
         if($event->getEntity() instanceof Arrow){
-            if($event->getEntity()->onGround || $event->getEntity()->inBlock || $event->getEntity()->isCollided){
+            if($event->getEntity()->onGround || $event->getEntity()->isCollided){
                 $event->getEntity()->close();
             }
 
@@ -492,7 +498,9 @@ $event->getPlayer()->sendMessage($this->PREFIX."This game is not in usage.");
 
 
    }        
-    }}}
+    }
+}
+}
 
     
     
@@ -507,7 +515,7 @@ $event->getPlayer()->sendMessage($this->PREFIX."This game is not in usage.");
 
 public function onLaunch(ProjectileLaunchEvent $event){
 
-if($this->inTurfWars($player = $event->getEntity()->shootingEntity)){
+if($this->inTurfWars($player = $event->getEntity()->getOwiningEntity())){
 if($this->games[$this->getGameByPlayer($player)]["Status"] != "INGAME"){
 
 $player->getInventory()->setItem(1, Item::get(262, 0, 5));
@@ -530,7 +538,8 @@ $event->getEntity()->setMotion(new Vector3(- \sin ( $player->yaw / 180 * M_PI ) 
 }
 
 
-}}
+}
+}
 }
 
 
@@ -654,11 +663,11 @@ return;
 $this->addScore($this->getTeam($killer), $this->getGameByPlayer($killer));
 $this->updateTerrain($this->getGameByLevel($event->getEntity()->getLevel()->getFolderName()), $this->getTeam($killer));
 
-
-
+if($victim instanceof Player && $killer instanceof Player{
 $victim->sendMessage($this->PREFIX."§dYou were killed by §c".$killer->getName());
 
 $killer->sendMessage($this->PREFIX."§dYou killed §a".$victim->getName());
+}
 
 $event->setCancelled();
 
@@ -821,23 +830,6 @@ foreach($blues as $blue){
 $this->setTeam($blue, "Blue");
 $blue->sendMessage($this->PREFIX."Your Team: §lBlue");
 
-
-$customColor = 0x003333ff;
-
-    $i= Item::get(299);
-
-    $tempTag = new CompoundTag("", []);
-
-    $tempTag->customColor = new IntTag("customColor", $customColor);
-
-    $i->setCompoundTag($tempTag);
-
-    $blue->getInventory()->setHelmet($i);
-    $blue->getInventory()->setChestplate($i);
-    $blue->getInventory()->setLeggings($i);
-    $blue->getInventory()->setBoots($i);
-
-
 $blue->teleport(new Position($this->BLUESPAWN["x"], $this->BLUESPAWN["y"], $this->BLUESPAWN["z"], $this->getServer()->getLevelByName($Arena)));
 
 }
@@ -847,24 +839,6 @@ foreach($reds as $red){
 
 $this->setTeam($red, "Red");
 $red->sendMessage($this->PREFIX."Your Team: §l§cRed");
-
-
-$customColor = 0x00ff3300;
-
-    $i = Item::get(299);
-
-    $tempTag = new CompoundTag("", []);
-
-    $tempTag->customColor = new IntTag("customColor", $customColor);
-
-    $i->setCompoundTag($tempTag);
-
-    $red->getInventory()->setHelmet($i);
-    $red->getInventory()->setChestplate($i);
-    $red->getInventory()->setLeggings($i);
-    $red->getInventory()->setBoots($i);
-
-
 
 $red->teleport(new Position($this->REDSPAWN["x"], $this->REDSPAWN["y"], $this->REDSPAWN["z"], $this->getServer()->getLevelByName($Arena)));
 
