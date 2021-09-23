@@ -32,9 +32,7 @@ use pocketmine\block\Block;
 use pocketmine\entity\Arrow;
 use pocketmine\entity\Entity;
 
-
-
-
+use pocketmine\Player;
 
 use pocketmine\nbt\tag\IntTag;
 use pocketmine\nbt\tag\CompoundTag;
@@ -380,7 +378,7 @@ $this->deleteDirectory($this->getServer()->getDataPath() . "/worlds/" .$this->ga
 
 
 public function removeArrow(ProjectileHitEvent $event){
-if($this->inTurfWars($event->getEntity()->shootingEntity)){
+if($this->inTurfWars($event->getEntity()->getOwningEntity())){
         if($event->getEntity() instanceof Arrow){
             if($event->getEntity()->onGround || $event->getEntity()->isCollided){
                 $event->getEntity()->close();
