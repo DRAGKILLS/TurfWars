@@ -69,10 +69,11 @@ $this->getLogger()->info("A TurfWars map was added to the worlds folder, you can
 
 
 if(!file_exists($this->getDataFolder()."config.yml")){
-
-$this->getServer()->getLogger("No config.yml config found, disabling plugin.");
-$this->getServer()->getPluginManager()->disablePlugin($this);
-
+new Config($this->getDataFolder()."config.yml", Config::YAML, [
+    "Max_Players" => 2,
+    "Prefix" => $this->PREFIX,
+    "Enable_PC_Arrow_Mechanics" => false
+]);
 }
 
 $this->config = new Config($this->getDataFolder()."config.yml", Config::YAML);
