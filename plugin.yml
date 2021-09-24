@@ -3,5 +3,5 @@ main: TurfWars\Main
 version: 1.0.0
 api: 3.0.0
 load: STARTUP
-author: MyNameIsTriXz
-description: TurfWars pocketmine!
+authors: [DRAGKILLS, MyNameIsTriXz]
+description: TurfWars plugin pocketmine
