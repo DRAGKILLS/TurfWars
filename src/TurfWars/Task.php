@@ -12,12 +12,10 @@ use pocketmine\utils\TextFormat as F;
 class Task extends PluginTask{
 
     public function __construct(Main $plugin){
-       $this->plugin = $plugin;
+	$this->plugin = $plugin;
     }
-
 
     public function onRun($currentTick){
-      $this->plugin->Second();
+	$this->plugin->Second();
     }
-
 }
