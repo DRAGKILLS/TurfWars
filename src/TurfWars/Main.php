@@ -101,7 +101,7 @@ class Main extends PluginBase implements Listener
         ]
     ];
 
-    public $isDevelopmentBuild = false;
+    public $isDevelopmentBuild = true;
 
     public function onEnable()
     {
