@@ -37,6 +37,7 @@ class Main extends PluginBase implements Listener
     public $BLUESPAWN;
     public $config;
     public $sign;
+
     public $games = [
         "Game1" => [
             "Arena" => "TW-1",
@@ -99,7 +100,8 @@ class Main extends PluginBase implements Listener
             "BlueScore" => 0
         ]
     ];
-    public $isDevelopmentBuild = true;
+
+    public $isDevelopmentBuild = false;
 
     public function onEnable()
     {
