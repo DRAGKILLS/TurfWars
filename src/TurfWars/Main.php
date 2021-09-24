@@ -38,7 +38,8 @@ class Main extends PluginBase implements Listener {
     public $config;
     public $sign;
     public $games = ["Game1" => ["Arena" => "TW-1", "Status" => "JOINABLE", "RedScore" => 0, "BlueScore" => 0], "Game2" => ["Arena" => "TW-2", "Status" => "JOINABLE", "RedScore" => 0, "BlueScore" => 0], "Game3" => ["Arena" => "TW-3", "Status" => "JOINABLE", "RedScore" => 0, "BlueScore" => 0], "Game4" => ["Arena" => "TW-4", "Status" => "JOINABLE", "RedScore" => 0, "BlueScore" => 0], "Game5" => ["Arena" => "TW-5", "Status" => "JOINABLE", "RedScore" => 0, "BlueScore" => 0], "Game6" => ["Arena" => "TW-6", "Status" => "JOINABLE", "RedScore" => 0, "BlueScore" => 0], "Game7" => ["Arena" => "TW-7", "Status" => "JOINABLE", "RedScore" => 0, "BlueScore" => 0], "Game8" => ["Arena" => "TW-8", "Status" => "JOINABLE", "RedScore" => 0, "BlueScore" => 0], "Game9" => ["Arena" => "TW-9", "Status" => "JOINABLE", "RedScore" => 0, "BlueScore" => 0], "Game10" => ["Arena" => "TW-10", "Status" => "JOINABLE", "RedScore" => 0, "BlueScore" => 0]];
-    
+    public $isDevelopmentBuild = true;
+
     public function onEnable() {
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
         $this->getScheduler()->scheduleRepeatingTask(new Task($this), 20);
@@ -46,6 +47,10 @@ class Main extends PluginBase implements Listener {
             $this->copymap($this->getDataFolder() . "/maps/TW-BACKUP", $this->getServer()->getDataPath() . "/worlds/TW-1");
             $this->getLogger()->info("A TurfWars map was added to the worlds folder, you can add more by copy and rename it to TW-2, TW-3, TW-4...");
         }
+	if ($this->isDevelopmentBuild == true) {
+	    $this->getLogger()->error("[ERROR] You cant use a development build... Disabling the plugin");
+	    $this->getServer()->getPluginManager()->disablePlugin($this);
+	}
         if (!file_exists($this->getDataFolder() . "config.yml")) {
             new Config($this->getDataFolder() . "config.yml", Config::YAML, ["Max_Players" => 2, "Prefix" => "§d[§9TW§d]§b", "Enable_PC_Arrow_Mechanics" => false]);
         }
@@ -611,11 +616,6 @@ class Main extends PluginBase implements Listener {
                 }
             }
         }
-    }
-
-    public function ResetMap($levelname) {
-        $this->deleteDirectory($this->getServer()->getDataPath() . "/worlds/" . $levelname);
-        $this->copymap($this->getDataFolder() . "/maps/" . "TW-BACKUP", $this->getServer()->getDataPath() . "/worlds/" . $levelname);
     }
 
     public function copymap($src, $dst) {
