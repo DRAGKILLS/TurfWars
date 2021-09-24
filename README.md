@@ -12,5 +12,7 @@ I said i will never release the fixed ver but i dont want it anyways
 Done
 
 ## How it looks
+### Arena:
 <a href="https://raw.githubusercontent.com/DRAGKILLS/TurfWars/master/Install_Instructions/Arena_Look.jpg"><img src="https://raw.githubusercontent.com/DRAGKILLS/TurfWars/master/Install_Instructions/Arena_Look.jpg"></img></a><br>
+### Sign:
 <a href="https://raw.githubusercontent.com/DRAGKILLS/TurfWars/master/Install_Instructions/Sign_Look.png"><img src="https://raw.githubusercontent.com/DRAGKILLS/TurfWars/master/Install_Instructions/Sign_Look.png"></img></a><br>
