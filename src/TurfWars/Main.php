@@ -42,61 +42,61 @@ class Main extends PluginBase implements Listener
             "Arena" => "TW-1",
             "Status" => "JOINABLE",
             "RedScore" => 0,
-            "BlueScore" => 0,
+            "BlueScore" => 0
         ],
         "Game2" => [
             "Arena" => "TW-2",
             "Status" => "JOINABLE",
             "RedScore" => 0,
-            "BlueScore" => 0,
+            "BlueScore" => 0
         ],
         "Game3" => [
             "Arena" => "TW-3",
             "Status" => "JOINABLE",
             "RedScore" => 0,
-            "BlueScore" => 0,
+            "BlueScore" => 0
         ],
         "Game4" => [
             "Arena" => "TW-4",
             "Status" => "JOINABLE",
             "RedScore" => 0,
-            "BlueScore" => 0,
+            "BlueScore" => 0
         ],
         "Game5" => [
             "Arena" => "TW-5",
             "Status" => "JOINABLE",
             "RedScore" => 0,
-            "BlueScore" => 0,
+            "BlueScore" => 0
         ],
         "Game6" => [
             "Arena" => "TW-6",
             "Status" => "JOINABLE",
             "RedScore" => 0,
-            "BlueScore" => 0,
+            "BlueScore" => 0
         ],
         "Game7" => [
             "Arena" => "TW-7",
             "Status" => "JOINABLE",
             "RedScore" => 0,
-            "BlueScore" => 0,
+            "BlueScore" => 0
         ],
         "Game8" => [
             "Arena" => "TW-8",
             "Status" => "JOINABLE",
             "RedScore" => 0,
-            "BlueScore" => 0,
+            "BlueScore" => 0
         ],
         "Game9" => [
             "Arena" => "TW-9",
             "Status" => "JOINABLE",
             "RedScore" => 0,
-            "BlueScore" => 0,
+            "BlueScore" => 0
         ],
         "Game10" => [
             "Arena" => "TW-10",
             "Status" => "JOINABLE",
             "RedScore" => 0,
-            "BlueScore" => 0,
+            "BlueScore" => 0
         ]
     ];
     public $isDevelopmentBuild = true;
