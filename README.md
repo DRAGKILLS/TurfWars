@@ -12,4 +12,4 @@ I said i will never release the fixed ver but i dont want it anyways
 Done
 
 ## How it looks
-https://raw.githubusercontent.com/DRAGKILLS/TurfWars/master/Install_Instructions/Arena_Look.jpg
+<a href="https://raw.githubusercontent.com/DRAGKILLS/TurfWars/master/Install_Instructions/Arena_Look.jpg"><img src="https://raw.githubusercontent.com/DRAGKILLS/TurfWars/master/Install_Instructions/Arena_Look.jpg"></img></a><br>
