@@ -1,5 +1,7 @@
 <?php
+
 namespace TurfWars;
+
 use pocketmine\event\Listener;
 use pocketmine\plugin\PluginBase;
 use pocketmine\event\player\PlayerChatEvent;
@@ -26,7 +28,9 @@ use pocketmine\Player;
 use pocketmine\nbt\tag\IntTag;
 use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\math\Vector3;
+
 class Main extends PluginBase implements Listener {
+
     public $MAX = 2;
     public $PREFIX = "§d[§9TW§d]§b ";
     public $REDSPAWN;
@@ -34,6 +38,7 @@ class Main extends PluginBase implements Listener {
     public $config;
     public $sign;
     public $games = ["Game1" => ["Arena" => "TW-1", "Status" => "JOINABLE", "RedScore" => 0, "BlueScore" => 0], "Game2" => ["Arena" => "TW-2", "Status" => "JOINABLE", "RedScore" => 0, "BlueScore" => 0], "Game3" => ["Arena" => "TW-3", "Status" => "JOINABLE", "RedScore" => 0, "BlueScore" => 0], "Game4" => ["Arena" => "TW-4", "Status" => "JOINABLE", "RedScore" => 0, "BlueScore" => 0], "Game5" => ["Arena" => "TW-5", "Status" => "JOINABLE", "RedScore" => 0, "BlueScore" => 0], "Game6" => ["Arena" => "TW-6", "Status" => "JOINABLE", "RedScore" => 0, "BlueScore" => 0], "Game7" => ["Arena" => "TW-7", "Status" => "JOINABLE", "RedScore" => 0, "BlueScore" => 0], "Game8" => ["Arena" => "TW-8", "Status" => "JOINABLE", "RedScore" => 0, "BlueScore" => 0], "Game9" => ["Arena" => "TW-9", "Status" => "JOINABLE", "RedScore" => 0, "BlueScore" => 0], "Game10" => ["Arena" => "TW-10", "Status" => "JOINABLE", "RedScore" => 0, "BlueScore" => 0]];
+    
     public function onEnable() {
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
         $this->getScheduler()->scheduleRepeatingTask(new Task($this), 20);
@@ -51,6 +56,7 @@ class Main extends PluginBase implements Listener {
         $this->BLUESPAWN = ["x" => 608, "y" => 64, "z" => 1689];
         $this->REDSPAWN = ["x" => 534, "y" => 64, "z" => 1665];
     }
+
     /* API */
     public function onDisable() {
         foreach ($this->games as $game => $index) {
@@ -60,6 +66,7 @@ class Main extends PluginBase implements Listener {
             }
         }
     }
+
     public function SignUpdate() {
         $lobby = $this->getServer()->getDefaultLevel();
         if ($this->getServer()->isLevelLoaded($lobby->getFolderName())) {
@@ -91,12 +98,14 @@ class Main extends PluginBase implements Listener {
             }
         }
     }
+
     public function onQuit(PlayerQuitEvent $event) {
         if ($this->inTurfWars($event->getPlayer())) {
             $s = $this->games[$this->getGameByPlayer($event->getPlayer()) ]["Status"];
             $this->LeaveCheck($this->getGameByPlayer($event->getPlayer()), $this->getTeam($event->getPlayer()));
         }
     }
+
     public function updateTerrain($game, $scorerteam) {
         $x = 570 + $this->games[$game]["RedScore"] - $this->games[$game]["BlueScore"];
         $lvl = $this->getServer()->getLevelByName($this->games[$game]["Arena"]);
@@ -171,6 +180,7 @@ class Main extends PluginBase implements Listener {
             $lvl->setBlock(new Vector3($x + 1, 63, 1692), Block::get(159, 3));
         }
     }
+
     public function LeaveCheck($game, $team) {
         $gameplayers = $this->getServer()->getLevelByName($this->games[$game]["Arena"])->getPlayers();
         $s = $this->games[$game]["Status"];
@@ -215,6 +225,7 @@ class Main extends PluginBase implements Listener {
             }
         }
     }
+
     public function removeArrow(ProjectileHitEvent $event) {
         if ($this->inTurfWars($event->getEntity()->getOwningEntity())) {
             if ($event->getEntity() instanceof Arrow) {
@@ -224,6 +235,7 @@ class Main extends PluginBase implements Listener {
             }
         }
     }
+
     public function onSignCreate(SignChangeEvent $event) {
         if ($event->getPlayer()->isOp()) {
             if ($event->getLine(0) == "§d[§9TW§d]") {
@@ -242,6 +254,7 @@ class Main extends PluginBase implements Listener {
             $event->setCancelled();
         }
     }
+
     public function onInteract(PlayerInteractEvent $event) {
         if ($event->getBlock()->getID() == 323 || $event->getBlock()->getID() == 63 || $event->getBlock()->getID() == 68) {
             $sign = $event->getPlayer()->getLevel()->getTile($event->getBlock());
@@ -278,6 +291,7 @@ class Main extends PluginBase implements Listener {
             }
         }
     }
+
     public function onLaunch(ProjectileLaunchEvent $event) {
         if ($this->inTurfWars($player = $event->getEntity()->getOwiningEntity())) {
             if ($this->games[$this->getGameByPlayer($player) ]["Status"] != "INGAME") {
@@ -294,11 +308,13 @@ class Main extends PluginBase implements Listener {
             }
         }
     }
+
     public function onItemDrop(PlayerDropItemEvent $event) {
         if ($this->inTurfWars($event->getPlayer())) {
             $event->setCancelled();
         }
     }
+
     public function onBreak(BlockBreakEvent $event) {
         if ($this->inTurfWars($event->getPlayer())) {
             $event->setCancelled();
@@ -317,6 +333,7 @@ class Main extends PluginBase implements Listener {
             }
         }
     }
+
     public function onMove(PlayerMoveEvent $event) {
         if ($this->inTurfWars($player = $event->getPlayer())) {
             if (!($this->games[$this->getGameByPlayer($player) ]["Status"] == "INGAME" || $this->games[$this->getGameByPlayer($player) ]["Status"] == "JOINABLE" || $this->games[$this->getGameByPlayer($player) ]["Status"] > 5)) {
@@ -335,6 +352,7 @@ class Main extends PluginBase implements Listener {
             }
         }
     }
+
     public function onDamage(EntityDamageEvent $event) {
         if ($event instanceof EntityDamageByEntityEvent) {
             if ($event->getCause() == EntityDamageByEntityEvent::CAUSE_PROJECTILE) {
@@ -378,6 +396,7 @@ class Main extends PluginBase implements Listener {
             $event->setCancelled();
         }
     }
+
     public function joinGame($player, $levelname) {
         if (!$this->getServer()->isLevelLoaded($levelname)) {
             $this->getServer()->loadLevel($levelname);
@@ -390,6 +409,7 @@ class Main extends PluginBase implements Listener {
             $player->sendMessage($this->PREFIX . "Game is running already.");
         }
     }
+
     public function joinRandomGame($player) {
         foreach ($this->games as $game => $value) {
             $Arena = $value["Arena"];
@@ -408,6 +428,7 @@ class Main extends PluginBase implements Listener {
             }
         }
     }
+
     public function GameSetup($player, $Arena) {
         // Game setup
         $Players = $this->getServer()->getLevelByName($Arena)->getPlayers();
@@ -437,6 +458,7 @@ class Main extends PluginBase implements Listener {
             $this->games[$this->getGameByLevel($Arena) ]["Status"] = 5;
         }
     }
+
     /* GAME API */
     public function StartGame($Arena) {
         $players = $this->getServer()->getLevelByName($Arena)->getPlayers();
@@ -454,6 +476,7 @@ class Main extends PluginBase implements Listener {
             $red->teleport(new Position($this->REDSPAWN["x"], $this->REDSPAWN["y"], $this->REDSPAWN["z"], $this->getServer()->getLevelByName($Arena)));
         }
     }
+
     public function setTeam($player, $teamname) {
         if ($teamname == "Red") {
             $player->setNameTag("§c[RED] §f" . $player->getName());
@@ -462,6 +485,7 @@ class Main extends PluginBase implements Listener {
             $player->setNameTag("§b[BLUE] §f" . $player->getName());
         }
     }
+
     public function getTeam($player) {
         if (strpos($player->getNameTag(), "[RED] ")) {
             return "Red";
@@ -469,6 +493,7 @@ class Main extends PluginBase implements Listener {
             return "Blue";
         }
     }
+
     public function inTurfWars($player) {
         if ($this->getGameByPlayer($player) == "") {
             return false;
@@ -476,6 +501,7 @@ class Main extends PluginBase implements Listener {
             return true;
         }
     }
+
     public function getGameByPlayer($player) {
         if (is_null($player)) return;
         foreach ($this->games as $game => $value) {
@@ -484,6 +510,7 @@ class Main extends PluginBase implements Listener {
             }
         }
     }
+
     public function getGameByLevel($level) {
         foreach ($this->games as $game => $value) {
             if ($value["Arena"] == $level) {
@@ -491,6 +518,7 @@ class Main extends PluginBase implements Listener {
             }
         }
     }
+
     public function addScore($team, $game /* Game1, Game2 etc...*/
     ) {
         $levelname = $this->games[$game]["Arena"];
@@ -532,6 +560,7 @@ class Main extends PluginBase implements Listener {
             $this->copymap($this->getDataFolder() . "/maps/TW-BACKUP", $this->getServer()->getDataPath() . "/worlds/" . $this->games[$game]["Arena"]);
         }
     }
+
     public function Second() {
         $this->SignUpdate();
         foreach ($this->games as $game => $value) {
@@ -583,11 +612,12 @@ class Main extends PluginBase implements Listener {
             }
         }
     }
-    // thanks to @CraftYourBukkit for the code below
+
     public function ResetMap($levelname) {
         $this->deleteDirectory($this->getServer()->getDataPath() . "/worlds/" . $levelname);
         $this->copymap($this->getDataFolder() . "/maps/" . "TW-BACKUP", $this->getServer()->getDataPath() . "/worlds/" . $levelname);
     }
+
     public function copymap($src, $dst) {
         $dir = opendir($src);
         @mkdir($dst);
@@ -602,6 +632,7 @@ class Main extends PluginBase implements Listener {
         }
         closedir($dir);
     }
+
     public function deleteDirectory($dirPath) {
         if (is_dir($dirPath)) {
             $objects = scandir($dirPath);
