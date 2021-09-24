@@ -854,12 +854,12 @@ $red->teleport(new Position($this->REDSPAWN["x"], $this->REDSPAWN["y"], $this->R
 public function setTeam($player, $teamname){
 
 if($teamname == "Red"){
-$player->setNameTag("§c[RED] §e".$player->getName());
+$player->setNameTag("§c[RED] §f".$player->getName());
 }
 
 
 if($teamname == "Blue"){
-$player->setNameTag("§b[BLUE] §e".$player->getName());
+$player->setNameTag("§b[BLUE] §f".$player->getName());
 }}
 
 
