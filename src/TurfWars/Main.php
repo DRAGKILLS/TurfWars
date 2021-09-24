@@ -97,7 +97,7 @@ class Main extends PluginBase implements Listener
             "Status" => "JOINABLE",
             "RedScore" => 0,
             "BlueScore" => 0,
-        ],
+        ]
     ];
     public $isDevelopmentBuild = true;
 
@@ -128,7 +128,7 @@ class Main extends PluginBase implements Listener
             new Config($this->getDataFolder() . "config.yml", Config::YAML, [
                 "Max_Players" => 2,
                 "Prefix" => "§d[§9TW§d]§b",
-                "Enable_PC_Arrow_Mechanics" => false,
+                "Enable_PC_Arrow_Mechanics" => false
             ]);
         }
         $this->config = new Config(
@@ -418,8 +418,7 @@ class Main extends PluginBase implements Listener
         if ($event->getPlayer()->isOp()) {
             if ($event->getLine(0) == "§d[§9TW§d]") {
                 if (!$this->getServer()->isLevelGenerated($event->getLine(1))) {
-                    $event
-                        ->getPlayer()
+                    $event->getPlayer()
                         ->sendMessage(
                             $this->PREFIX . "The level does not exist."
                         );
@@ -429,15 +428,13 @@ class Main extends PluginBase implements Listener
                 $event->setLine(1, "§b" . $event->getLine(1));
                 $event->setLine(2, "§fJoinable");
                 $event->setLine(3, "§d0§e / §d" . $this->MAX);
-                $event
-                    ->getPlayer()
+                $event->getPlayer()
                     ->sendMessage(
                         $this->PREFIX . "Join sign was succesfuly created."
                     );
             }
         } else {
-            $event
-                ->getPlayer()
+            $event->getPlayer()
                 ->sendMessage(
                     $this->PREFIX .
                         "§cYou need to be an OP to create a join sign for that minigame."
