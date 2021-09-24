@@ -3,11 +3,6 @@
 namespace TurfWars;
 
 use pocketmine\scheduler\Task as PluginTask;
-use pocketmine\Server; 
-use pocketmine\level\Level;
-use pocketmine\math\Vector3;
-use pocketmine\tile\Sign;
-use pocketmine\utils\TextFormat as F;
 
 class Task extends PluginTask{
 
