@@ -127,16 +127,14 @@ class Main extends PluginBase implements Listener
                 ->disablePlugin($this);
         }
         if (!file_exists($this->getDataFolder() . "config.yml")) {
-            new Config($this->getDataFolder() . "config.yml", Config::YAML, [
-                "Max_Players" => 2,
-                "Prefix" => "§d[§9TW§d]§b",
-                "Enable_PC_Arrow_Mechanics" => false
-            ]);
+            //new Config($this->getDataFolder() . "config.yml", Config::YAML, [
+            //    "Max_Players" => 2,
+            //   "Prefix" => "§d[§9TW§d]§b",
+            //    "Enable_PC_Arrow_Mechanics" => false
+            //]);
+	    $this->saveDefaultConfig();
         }
-        $this->config = new Config(
-            $this->getDataFolder() . "config.yml",
-            Config::YAML
-        );
+        $this->config = $this->getConfig();
         $this->MAX = $this->config->get("Max_Players");
         $this->PREFIX = $this->config->get("Prefix") . " ";
         // initialize spawns
