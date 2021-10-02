@@ -98,6 +98,66 @@ class Main extends PluginBase implements Listener
             "Status" => "JOINABLE",
             "RedScore" => 0,
             "BlueScore" => 0
+        ],
+	"Game11" => [
+            "Arena" => "TW-11",
+            "Status" => "JOINABLE",
+            "RedScore" => 0,
+            "BlueScore" => 0
+        ],
+	"Game12" => [
+            "Arena" => "TW-12",
+            "Status" => "JOINABLE",
+            "RedScore" => 0,
+            "BlueScore" => 0
+        ],
+	"Game13" => [
+            "Arena" => "TW-13",
+            "Status" => "JOINABLE",
+            "RedScore" => 0,
+            "BlueScore" => 0
+        ],
+	"Game14" => [
+            "Arena" => "TW-14",
+            "Status" => "JOINABLE",
+            "RedScore" => 0,
+            "BlueScore" => 0
+        ],
+	"Game15" => [
+            "Arena" => "TW-15",
+            "Status" => "JOINABLE",
+            "RedScore" => 0,
+            "BlueScore" => 0
+        ],
+	"Game16" => [
+            "Arena" => "TW-16",
+            "Status" => "JOINABLE",
+            "RedScore" => 0,
+            "BlueScore" => 0
+        ],
+	"Game17" => [
+            "Arena" => "TW-17",
+            "Status" => "JOINABLE",
+            "RedScore" => 0,
+            "BlueScore" => 0
+        ],
+	"Game18" => [
+            "Arena" => "TW-18",
+            "Status" => "JOINABLE",
+            "RedScore" => 0,
+            "BlueScore" => 0
+        ],
+	"Game19" => [
+            "Arena" => "TW-19",
+            "Status" => "JOINABLE",
+            "RedScore" => 0,
+            "BlueScore" => 0
+        ],
+	"Game20" => [
+            "Arena" => "TW-20",
+            "Status" => "JOINABLE",
+            "RedScore" => 0,
+            "BlueScore" => 0
         ]
     ];
 
