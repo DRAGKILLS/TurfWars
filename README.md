@@ -1,5 +1,5 @@
 # TurfWars
-Origionally developed by MyNameIsTriXz | MCPE TurfWars minigame
+MCPE TurfWars minigame
 
 I said i will never release the fixed ver but i dont want it anyways
 
