@@ -1,10 +1,10 @@
 <?php
 
-namespace TurfWars;
+namespace TurfWars\tasks;
 
-use pocketmine\scheduler\Task as PluginTask;
+use pocketmine\scheduler\Task;
 
-class Task extends PluginTask{
+class GameTask extends Task{
 
     public function __construct(Main $plugin){
 	$this->plugin = $plugin;
