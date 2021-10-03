@@ -28,6 +28,7 @@ use pocketmine\Player;
 use pocketmine\nbt\tag\IntTag;
 use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\math\Vector3;
+use TurfWars\tasks\GameTask;
 
 class Main extends PluginBase implements Listener {
 	
@@ -42,7 +43,7 @@ class Main extends PluginBase implements Listener {
 	
     public function onEnable() {
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
-        $this->getScheduler()->scheduleRepeatingTask(new Task($this), 20);
+        $this->getScheduler()->scheduleRepeatingTask(new GameTask($this), 20);
         if (!is_dir($this->getServer()->getDataPath() . "worlds/TW-1")) {
             $this->copymap($this->getDataFolder() . "/maps/TW-BACKUP", $this->getServer()->getDataPath() . "/worlds/TW-1");
             $this->getLogger()->info("A TurfWars map was added to the worlds folder, you can add more by copy and rename it to TW-2, TW-3, TW-4...");
