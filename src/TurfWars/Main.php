@@ -30,6 +30,7 @@ use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\math\Vector3;
 use TurfWars\tasks\GameTask;
 use TurfWars\command\TurfWarsCommand;
+use TurfWars\arena\MapReset;
 
 class Main extends PluginBase implements Listener {
 	
