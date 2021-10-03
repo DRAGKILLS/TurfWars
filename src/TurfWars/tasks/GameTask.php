@@ -3,6 +3,7 @@
 namespace TurfWars\tasks;
 
 use pocketmine\scheduler\Task;
+use TurfWars\Main;
 
 class GameTask extends Task{
 
