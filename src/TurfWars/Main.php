@@ -44,16 +44,16 @@ class Main extends PluginBase implements Listener {
     public $isDevelopmentBuild = true;
 	
     public function onEnable() {
+	if ($this->isDevelopmentBuild == true) {
+            $this->getLogger()->error("[ERROR] You cant use a development build... Disabling the plugin");
+            $this->getServer()->getPluginManager()->disablePlugin($this);
+        }
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
 // 	$this->getServer()->getCommandMap()->register("TW-DRAGKILLS", new TurfWarsCommand($this));
         $this->getScheduler()->scheduleRepeatingTask(new GameTask($this), 20);
         if (!is_dir($this->getServer()->getDataPath() . "worlds/TW-1")) {
             $this->copymap($this->getDataFolder() . "/maps/TW-BACKUP", $this->getServer()->getDataPath() . "/worlds/TW-1");
             $this->getLogger()->info("A TurfWars map was added to the worlds folder, you can add more by copy and rename it to TW-2, TW-3, TW-4...");
-        }
-        if ($this->isDevelopmentBuild == true) {
-            $this->getLogger()->error("[ERROR] You cant use a development build... Disabling the plugin");
-            $this->getServer()->getPluginManager()->disablePlugin($this);
         }
         if (!file_exists($this->getDataFolder() . "config.yml")) {
             $this->saveDefaultConfig();
