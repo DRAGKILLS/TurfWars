@@ -429,7 +429,7 @@ class Main extends PluginBase implements Listener {
             }
             $block = $event->getPlayer()->getWorld()->getBlock(new Vector3($player->getPosition()->getX(), 63, $player->getPosition()->getZ()));
             if ($this->getTeam($player) == "Red") {
-                if ($block->getId() == 159 && $block->getDamage() == 3) {
+                if ($block->getId() == 159 && $block->getDamage() == 11) {
                     $player->setMotion(new Vector3(-1.5, 1, 0));
                 }
             }
