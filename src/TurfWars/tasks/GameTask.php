@@ -11,7 +11,8 @@ class GameTask extends Task{
 	$this->plugin = $plugin;
     }
 
-    public function onRun($currentTick){
+    public function onRun(): void
+    {
 	$this->plugin->Second();
     }
 }
