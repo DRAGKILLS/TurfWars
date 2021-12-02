@@ -1,7 +1,7 @@
 name: TurfWars
 main: TurfWars\Main
 version: 1.0.0
-api: 3.0.0
+api: 4.0.0
 load: STARTUP
 authors: [DRAGKILLS, MyNameIsTriXz]
 description: TurfWars plugin pocketmine
