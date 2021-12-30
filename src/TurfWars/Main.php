@@ -457,7 +457,7 @@ class Main extends PluginBase implements Listener {
                             return;
                         }
                         $this->addScore($this->getTeam($killer), $this->getGameByPlayer($killer));
-                        $this->updateTerrain($this->getGameByLevel($event->getEntity()->getLevel()->getFolderName()), $this->getTeam($killer));
+                        $this->updateTerrain($this->getGameByLevel($event->getEntity()->getWorld()->getFolderName()), $this->getTeam($killer));
                         if ($victim instanceof Player && $killer instanceof Player) {
                             $victim->sendMessage($this->PREFIX . "§dYou were killed by §c" . $killer->getName());
                             $killer->sendMessage($this->PREFIX . "§dYou killed §a" . $victim->getName());
@@ -599,7 +599,7 @@ class Main extends PluginBase implements Listener {
             return false;
         }
         foreach ($this->games as $game => $value) {
-            if ($value["Arena"] == $player->getLevel()->getFolderName()) {
+            if ($value["Arena"] == $player->getWorld()->getFolderName()) {
                 return $game;
             }
         }
